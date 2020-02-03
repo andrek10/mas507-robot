@@ -1,0 +1,76 @@
+\documentclass{article}
+
+
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage[most]{tcolorbox}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+
+\usepackage{fancyhdr}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\pagestyle{fancy}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+	
+	\section{Linux commands}
+	
+	% Compiled on \today\ at \currenttime \\\\
+	
+	
+	\newcommand{\cmd}[1]{<\textit{#1}>}
+	
+	\renewcommand{\arraystretch}{1.3}
+	
+	A table with common Linux commands:
+		
+		
+	\begin{tabularx}{\textwidth}{lX} \hline
+		\bfseries Command & \bfseries Explanation \\ \hline 
+		cd & Change directory  \\ \hline
+		cd \textasciitilde & Change directory to home \\ \hline
+		cd .. & Go back one folder \\ \hline
+		cd ../.. & Go back two folders \\ \hline
+		pwd & Show current folder location \\ \hline
+		ls & See files and folders in your current location \\ \hline
+		cd \cmd{directory} & CD into \cmd{directory} \\ \hline
+		sudo \cmd{command} & sudo stands for: ``Super User DO''. Give administrator rights to the \cmd{command} \\ \hline
+		sudo shutdown now & Shuts down the computer \\ \hline
+		sudo reboot & Restarts the computer \\ \hline
+		echo "hello" & Prints ``hello'' to the terminal \\ \hline
+		\cmd{command1} $|$ \cmd{command2} & The $|$ makes the output of \cmd{command1} to be sent to \cmd{command2}\\ \hline
+		grep \cmd{text} \cmd{file} & Finds and displays lines which contains \cmd{text} in the \cmd{file} \\ \hline
+		echo "Test 1 2 3" $|$ grep 2 & Prints "Test 1 2 3" into the next command due to $|$. This text is input into the grep command. Grep searches for "2" and shows where it found it. The $|$ may not be copied correctly to the terminal \\ \hline
+		rm \cmd{file} & Deletes \cmd{file} \\ \hline
+		rm -r \cmd{folder} & Deletes \cmd{folder} and everything inside it \\ \hline
+		mkdir \cmd{folder} & Makes a \cmd{folder} \\ \hline
+		chmod \cmd{file} & Changes mode of a \cmd{file} \\ \hline
+		chmod +x \cmd{file} & Lets \cmd{file} be executable. + means to add. +x means add execution (x).  \\ \hline
+		./\cmd{file} & Executes \cmd{file} if \cmd{file} is in the current directory \\ \hline
+		\cmd{folder}/\cmd{file} & Executes \cmd{file} that is located in \cmd{folder} \\ \hline
+		ssh -X \cmd{username}@\cmd{hostname} & Opens a secure shell (SSH) for user \cmd{username} on computer \cmd{hostname}. The -X lets display commands be sent through SSH \\ \hline
+		ssh -X jetbot@192.168.0.3 & Opens ssh to jetbot \\ \hline
+		python \cmd{file.py} & Run Python version 2 with input file \cmd{file.py} \\ \hline
+		python3 \cmd{file.py} & Run Python version 3 with input file \cmd{file.py} \\ \hline
+	
+	\end{tabularx}
+	
+	\newpage
+	
+	\subsection{Tmux commands}
+	
+	Assumes that .tmux.conf is downloaded from canvas and put into /home/jetbot \\\\
+	
+	\begin{tabularx}{\textwidth}{lX} \hline
+		\bfseries Command & \bfseries Explanation \\
+		CTRL a & Enter command mode. Every other command in this list starting with \textit{cm} requires you to be in command mode. You need to re-enter command mode for each command \\ \hline
+		\textit{cm} - & Split display horizontally \\ \hline
+		\textit{cm} $|$ & Split display vertically \\ \hline
+		tmux detach & Go out of the tmux session and keep it running in the background \\ \hline
+		tmux attach & Go back into the tmux session that is already running \\ \hline
+	\end{tabularx}
+
+\end{document}
